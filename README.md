@@ -36,9 +36,12 @@ Bu projede Python programlama dili kullanılarak, **makine öğrenmesi** ve **Io
 pip install openai-whisper
 pip install SpeechRecognition
 pip install PyAudio
+pip install transformers
+pip install datasets
+pip install torch
 ```
 
-3. [FFmpeg](https://www.gyan.dev/ffmpeg/builds/) aracını indirip sistem PATH'ine ekleyin.
+3. [FFmpeg](https://www.gyan.dev/ffmpeg/builds/) aracını indirip sistem PATH'ine ekleyin. 
 
 ---
 
@@ -57,3 +60,70 @@ Bu projenin amacı, Türkçe konuşmaları algılayabilen ve geliştirilebilir b
 * [ ] Öğrenen yapı / komut optimizasyonu
 
 ---
+
+## 📊 Modeli Eğitme
+
+```bash
+python train_intent_classifier.py
+```
+
+Bu adım sonunda `results/` klasöründe aşağıdaki dosyalar oluşur:
+
+* `pytorch_model.bin`: eğitilen ağırlıklar
+* `config.json`: model konfigürasyonu
+* `tokenizer_config.json`, `vocab.txt`: tokenizer bilgileri
+
+### ❗ Önemli:
+
+Eğer `save_steps` çok düşükse, çok sayıda `checkpoint-*` klasörü oluşur. `save_total_limit` ile sınırlandırılabilir.
+
+```python
+training_args = TrainingArguments(
+    save_steps=100,  # 100 adımda bir kayıt
+    save_total_limit=2  # En fazla 2 kayıt sakla
+)
+```
+
+---
+
+## 🔎 Model ile Tahmin
+
+```bash
+python predict_intent.py
+```
+
+```python
+# predict_intent.py örneği
+text = "Müzik açar mısın?"
+print(predict_intent(text))
+# Çıktı: muzik_cal
+```
+
+---
+
+## 🗃 Veri Kümesi
+
+`intent_dataset.py` içinde örnek veri kümesi:
+
+```python
+intent_dataset = [
+    {"text": "Hava durumu nasıl?", "intent": "hava_durumu"},
+    {"text": "Işığı açar mısın?", "intent": "isik_ac"},
+    {"text": "Şarkı başlat.", "intent": "muzik_cal"},
+    {"text": "Alarmı kur.", "intent": "alarm_kur"},
+    ...
+]
+```
+
+> Veri seti küçükse model başarımı düşük olabilir. Geniş ve dengeli veri seti kullanılması önerilir.
+
+---
+
+## 🧠 Eğitimin Sonuçları
+
+```bash
+{'train_runtime': 208.1, 'train_loss': 1.68, 'epoch': 3.0}
+```
+
+* `train_loss`: Eğitim kaybı, ne kadar düşükse model o kadar iyi öğrenmiş demektir.
+* `train_runtime`: Toplam eğitim süresi.
