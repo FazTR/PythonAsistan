@@ -10,8 +10,7 @@ def dinleme_cevirme():
     with sr.Microphone() as source:
          print("Hazır, konuşabilirsiniz...")
          audio = r.listen(source)
-
-
+         
     with open("gecici_kayit.wav", "wb") as f:
          f.write(audio.get_wav_data())
 
