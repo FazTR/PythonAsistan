@@ -1,13 +1,39 @@
 intent_dataset = [
     # hava_durumu niyeti
-    {"text": "hava durumu nasıl", "intent": "hava_durumu"},
-    {"text": "bugün hava sıcak mı", "intent": "hava_durumu"},
-    {"text": "hava durumu nedir", "intent": "hava_durumu"},
-    {"text": "hava tahminini söyle", "intent": "hava_durumu"},
-    {"text": "hava raporu var mı", "intent": "hava_durumu"},
-    {"text": "bugün yağmur yağacak mı", "intent": "hava_durumu"},
-    {"text": "yarın hava nasıl olacak", "intent": "hava_durumu"},
-    {"text": "hava durumu bilgisini ver", "intent": "hava_durumu"},
+    {"text": "Merhaba", "intent": "selam_verme"},
+    {"text": "Merhaba, Ebu.", "intent": "selam_verme"},
+    {"text": "Selam.", "intent": "selam_verme"},
+    {"text": "Naber?", "intent": "selam_verme"},
+    {"text": "hey ebu", "intent": "selam_verme"},
+    {"text": "Ebu.", "intent": "selam_verme"},
+    {"text": "Selam Ebu.", "intent": "selam_verme"},
+    {"text": "Naber Ebu?", "intent": "selam_verme"},
+
+
+    {"text": "Nasılsın!", "intent": "selam_verme"},
+    {"text": "İyi misin Ebu?", "intent": "sosyal_soru"},
+    {"text": "Bugün nasılsın? Ebu", "intent": "sosyal_soru"},
+    {"text": "Nasıl gidiyor?", "intent": "sosyal_soru"},
+    {"text": "Bugün nasılsın?", "intent": "sosyal_soru"}
+
+
+
+    {"text": "Hava durumu nasıl?", "intent": "hava_durumu"},
+    {"text": "hava sıcak mı?", "intent": "hava_durumu"},
+    {"text": "Hava durumu nedir?", "intent": "hava_durumu"},
+    {"text": "Hava tahminini söyle.", "intent": "hava_durumu"},
+    {"text": "Hava raporu var mı?", "intent": "hava_durumu"},
+    {"text": "Yağmur yağacak mı?", "intent": "hava_durumu"},
+    {"text": "Hava nasıl olacak?", "intent": "hava_durumu"},
+    {"text": "Hava durumu bilgisini ver.", "intent": "hava_durumu"},
+    {"text": "Hava Durumu", "intent": "hava_durumu"},
+    {"text": "Hava nasıl?", "intent": "hava_durumu"},
+    {"text": "Hava durumu nasıl?", "intent": "hava_durumu"},
+    {"text": "Hava durumu iyi mi?", "intent": "hava_durumu"},
+    {"text": "Hava durumu kötü mü?", "intent": "hava_durumu"},
+    {"text": "Hava güzel mi?", "intent": "hava_durumu"},
+    {"text": "Hava kötü mü?", "intent": "hava_durumu"},
+
 
     # isik_ac niyeti
     {"text": "ışığı açar mısın", "intent": "isik_ac"},

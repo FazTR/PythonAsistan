@@ -24,6 +24,6 @@ def predict_intent(text):
 
 # 4. Test
 if __name__ == "__main__":
-    test_text = "müzik ve hava durumu nedir"
+    test_text = "bugün hava çok kötü hava tahminleri nasıl"
     prediction = predict_intent(test_text)
     print(f"'{test_text}' -> Tahmin Edilen Niyet: {prediction}")
