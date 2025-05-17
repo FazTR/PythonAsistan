@@ -1,22 +1,33 @@
-from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments
-from dataset_pre import tokenized_dataset
-import torch
+# train_model.py
 
+from transformers import AutoModelForSequenceClassification, Trainer, TrainingArguments, AutoTokenizer
+from datasets import load_from_disk
+import json
+
+# 1. Tokenize edilmiş veri kümesini yükle
+tokenized_dataset = load_from_disk("tokenized_dataset")
+
+# 2. Label sayısını oku
+with open("label_list.json", "r", encoding="utf-8") as f:
+    label_list = json.load(f)
+
+# 3. Modeli yükle
 model = AutoModelForSequenceClassification.from_pretrained(
-    "bert-base-uncased",
-    num_labels=len(set(tokenized_dataset["label"]))
+    "dbmdz/bert-base-turkish-cased",
+    num_labels=len(label_list)
 )
 
+# 4. Eğitim ayarları
 training_args = TrainingArguments(
     output_dir="./results",
-  #  evaluation_strategy="epoch",  # <-- HATA BURADA OLUYORSA: yukarıdaki çözümleri dene
-    num_train_epochs=3,
+    num_train_epochs=20,
     per_device_train_batch_size=8,
     save_steps=36,
     save_total_limit=2,
     logging_dir="./logs",
 )
 
+# 5. Trainer oluştur ve eğit
 trainer = Trainer(
     model=model,
     args=training_args,
@@ -24,10 +35,8 @@ trainer = Trainer(
 )
 
 trainer.train()
+
+# 6. Model ve tokenizer kaydet
 model.save_pretrained("./results")
-
-# <-- Tokenizer'ı da kaydet
-from transformers import AutoTokenizer
-tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("dbmdz/bert-base-turkish-cased")
 tokenizer.save_pretrained("./results")
-
