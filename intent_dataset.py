@@ -14,7 +14,7 @@ intent_dataset = [
     {"text": "İyi misin Ebu?", "intent": "sosyal_soru"},
     {"text": "Bugün nasılsın? Ebu", "intent": "sosyal_soru"},
     {"text": "Nasıl gidiyor?", "intent": "sosyal_soru"},
-    {"text": "Bugün nasılsın?", "intent": "sosyal_soru"}
+    {"text": "Bugün nasılsın?", "intent": "sosyal_soru"},
 
 
 
