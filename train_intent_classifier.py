@@ -22,7 +22,7 @@ training_args = TrainingArguments(
     output_dir="./results",
     num_train_epochs=20,
     per_device_train_batch_size=8,
-    save_steps=36,
+    save_steps=50,
     save_total_limit=2,
     logging_dir="./logs",
 )
