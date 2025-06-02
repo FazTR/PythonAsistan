@@ -58,9 +58,6 @@ The aim is to create a Turkish-speaking voice assistant that runs offline, can b
 ## 📊 Training the Model
 Run the training script:
 
-bash
-Copy
-Edit
 python train_intent_classifier.py
 This will generate files in the results/ directory:
 
@@ -73,9 +70,6 @@ tokenizer_config.json and vocab.txt: Tokenizer data
 ## ⚠️ Tip
 To limit checkpoints saved, set parameters like:
 
-python
-Copy
-Edit
 training_args = TrainingArguments(
     save_steps=100,
     save_total_limit=2
@@ -83,24 +77,17 @@ training_args = TrainingArguments(
 ## 🔎 Predicting Intents
 Run the prediction script:
 
-bash
-Copy
-Edit
 python predict_intent.py
 Example usage:
 
-python
-Copy
-Edit
 text = "Müzik açar mısın?"
 print(predict_intent(text))
 # Output: muzik_cal
+
 ## 🗃 Dataset Format
 Example intent dataset (intent_dataset.py):
 
 python
-Copy
-Edit
 intent_dataset = [
     {"text": "Hava durumu nasıl?", "intent": "hava_durumu"},
     {"text": "Işığı açar mısın?", "intent": "isik_ac"},
@@ -110,9 +97,6 @@ intent_dataset = [
 For better results, use a larger and balanced dataset.
 
 ## 📈 Training Results Example
-bash
-Copy
-Edit
 {'train_runtime': 208.1, 'train_loss': 1.68, 'epoch': 3.0}
 train_loss: Lower means better learning.
 
