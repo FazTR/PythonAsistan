@@ -1,36 +1,37 @@
-## 🧠 Yapay Zeka Destekli Sesli Asistan – Python + IoT
+# 🧠 AI-Powered Voice Assistant – Python + IoT
 
-Merhaba, ben **Feyzullah Öztürk**.
+Hi, I'm **Feyzullah Öztürk**.
 
-Bu projede Python programlama dili kullanılarak, **makine öğrenmesi** ve **IoT** teknolojileriyle entegre çalışabilen, **yerel olarak çalışan bir sesli asistan** geliştiriyoruz. Amacımız, hem yapay zeka temelli hem de ev otomasyonu sistemleriyle uyumlu bir asistan tasarlamak.
-
----
-
-### 🚀 Özellikler
-
-* ✅ **Ses Tanıma**: OpenAI'nin Whisper modeli ile internet bağlantısı olmadan çalışabilen yüksek doğruluklu ses tanıma.
-* ✅ **Yapay Zeka Temelleri**: Öğrenebilir yapıya zemin hazırlayan modüler sistem.
-* ✅ **IoT Uyumlu**: Gelecekte akıllı ev cihazları ile entegre edilebilir altyapı.
-* ✅ **Python 3.9.9** ile tam uyumlu.
+In this project, we're developing a **locally running voice assistant** using Python, enhanced with **machine learning** and **IoT** capabilities. Our goal is to build an assistant that understands natural speech and can integrate with smart home devices.
 
 ---
 
-### 🛠 Kullanılan Teknolojiler ve Kütüphaneler
+## 🚀 Features
 
-| Teknoloji                                                            | Açıklama                                                                    |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| [Python 3.9.9](https://www.python.org/downloads/release/python-399/) | Projenin temel programlama dili.                                            |
-| [OpenAI Whisper](https://github.com/openai/whisper)                  | Yüksek doğruluklu, çevrimdışı ses tanıma modeli.                            |
-| [FFmpeg](https://www.gyan.dev/ffmpeg/builds/)                        | Whisper'ın ses dosyalarını işleyebilmesi için gerekli ses dönüştürme aracı. |
-| [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)     | Mikrofon verisini yakalamak ve işlemek için kullanılır.                     |
-| [PyAudio](https://pypi.org/project/PyAudio/)                         | Mikrofon üzerinden ses almak için kullanılır.                               |
+- ✅ **Speech Recognition**: High-accuracy, offline speech recognition with OpenAI Whisper.
+- ✅ **AI Foundations**: Modular design supporting future learning capabilities.
+- ✅ **IoT Compatibility**: Built for future integration with smart devices.
+- ✅ Fully compatible with **Python 3.9.9**.
 
 ---
 
-### 🛆 Kurulum
+## 🛠 Technologies and Libraries
 
-1. Python 3.9.9'u kurun.
-2. Gerekli kütüphaneleri yükleyin:
+| Technology                                                           | Description                                                                 |
+|----------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| [Python 3.9.9](https://www.python.org/downloads/release/python-399/) | Main programming language                                                   |
+| [OpenAI Whisper](https://github.com/openai/whisper)                  | Offline, high-accuracy speech recognition                                  |
+| [FFmpeg](https://www.gyan.dev/ffmpeg/builds/)                        | Audio conversion tool required by Whisper                                  |
+| [SpeechRecognition](https://pypi.org/project/SpeechRecognition/)     | Captures and processes microphone input                                    |
+| [PyAudio](https://pypi.org/project/PyAudio/)                         | Accesses microphone audio                                                  |
+| [Transformers](https://huggingface.co/docs/transformers/index)      | Used for intent classification modeling                                    |
+
+---
+
+## 🛆 Installation
+
+1. Install Python 3.9.9
+2. Install required libraries:
 
 ```bash
 pip install openai-whisper
@@ -39,91 +40,93 @@ pip install PyAudio
 pip install transformers
 pip install datasets
 pip install torch
-```
+🎯 Project Goal
+The aim is to create a Turkish-speaking voice assistant that runs offline, can be extended with machine learning, and controls IoT devices.
 
-3. [FFmpeg](https://www.gyan.dev/ffmpeg/builds/) aracını indirip sistem PATH'ine ekleyin. 
+🧪 Development Status
+ Voice command capture
 
----
+ Turkish speech recognition (Whisper)
 
-### 🎯 Amaç
+ Text-to-Speech (TTS) response generation
 
-Bu projenin amacı, Türkçe konuşmaları algılayabilen ve geliştirilebilir bir sesli asistan altyapısı oluşturmaktır. İlerleyen aşamalarda makine öğrenmesi ile karar verebilen ve IoT cihazları kontrol edebilen bir sisteme dönüşmesi hedeflenmektedir.
+ IoT device control
 
----
+ Learning-based command optimization
 
-### 🧪 Geliştirme Durumu
+📊 Training the Model
+Run the training script:
 
-* [x] Sesli komut alma
-* [x] Türkçe ses tanıma (Whisper ile)
-* [ ] Yanıt üretebilme (TTS)
-* [ ] Cihaz kontrolü (IoT)
-* [ ] Öğrenen yapı / komut optimizasyonu
-
----
-
-## 📊 Modeli Eğitme
-
-```bash
+bash
+Copy
+Edit
 python train_intent_classifier.py
-```
+This will generate files in the results/ directory:
 
-Bu adım sonunda `results/` klasöründe aşağıdaki dosyalar oluşur:
+pytorch_model.bin: Trained model weights
 
-* `pytorch_model.bin`: eğitilen ağırlıklar
-* `config.json`: model konfigürasyonu
-* `tokenizer_config.json`, `vocab.txt`: tokenizer bilgileri
+config.json: Model configuration
 
-### ❗ Önemli:
+tokenizer_config.json and vocab.txt: Tokenizer data
 
-Eğer `save_steps` çok düşükse, çok sayıda `checkpoint-*` klasörü oluşur. `save_total_limit` ile sınırlandırılabilir.
+⚠️ Tip
+To limit checkpoints saved, set parameters like:
 
-```python
+python
+Copy
+Edit
 training_args = TrainingArguments(
-    save_steps=100,  # 100 adımda bir kayıt
-    save_total_limit=2  # En fazla 2 kayıt sakla
+    save_steps=100,
+    save_total_limit=2
 )
-```
+🔎 Predicting Intents
+Run the prediction script:
 
----
-
-## 🔎 Model ile Tahmin
-
-```bash
+bash
+Copy
+Edit
 python predict_intent.py
-```
+Example usage:
 
-```python
-# predict_intent.py örneği
+python
+Copy
+Edit
 text = "Müzik açar mısın?"
 print(predict_intent(text))
-# Çıktı: muzik_cal
-```
+# Output: muzik_cal
+🗃 Dataset Format
+Example intent dataset (intent_dataset.py):
 
----
-
-## 🗃 Veri Kümesi
-
-`intent_dataset.py` içinde örnek veri kümesi:
-
-```python
+python
+Copy
+Edit
 intent_dataset = [
     {"text": "Hava durumu nasıl?", "intent": "hava_durumu"},
     {"text": "Işığı açar mısın?", "intent": "isik_ac"},
     {"text": "Şarkı başlat.", "intent": "muzik_cal"},
     {"text": "Alarmı kur.", "intent": "alarm_kur"},
-    ...
 ]
-```
+For better results, use a larger and balanced dataset.
 
-> Veri seti küçükse model başarımı düşük olabilir. Geniş ve dengeli veri seti kullanılması önerilir.
-
----
-
-## 🧠 Eğitimin Sonuçları
-
-```bash
+📈 Training Results Example
+bash
+Copy
+Edit
 {'train_runtime': 208.1, 'train_loss': 1.68, 'epoch': 3.0}
-```
+train_loss: Lower means better learning.
 
-* `train_loss`: Eğitim kaybı, ne kadar düşükse model o kadar iyi öğrenmiş demektir.
-* `train_runtime`: Toplam eğitim süresi.
+train_runtime: Total training duration.
+
+📬 Contact
+If you have questions or suggestions, please reach out!
+Feyzullah Öztürk — LinkedIn • GitHub
+
+🧠 Future Plans
+Add Text-to-Speech (TTS) using Coqui or gTTS.
+
+Implement IoT device control via MQTT or HTTP.
+
+Build a learning system for command optimization.
+
+Develop a GUI or mobile app for easier interaction.
+
