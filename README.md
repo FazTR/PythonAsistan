@@ -41,7 +41,7 @@ pip install transformers
 pip install datasets
 pip install torch
 ```
-🎯 Project Goal
+## 🎯 Project Goal
 The aim is to create a Turkish-speaking voice assistant that runs offline, can be extended with machine learning, and controls IoT devices.
 
 🧪 Development Status
@@ -55,7 +55,7 @@ The aim is to create a Turkish-speaking voice assistant that runs offline, can b
 
  Learning-based command optimization
 
-📊 Training the Model
+## 📊 Training the Model
 Run the training script:
 
 bash
@@ -70,7 +70,7 @@ config.json: Model configuration
 
 tokenizer_config.json and vocab.txt: Tokenizer data
 
-⚠️ Tip
+## ⚠️ Tip
 To limit checkpoints saved, set parameters like:
 
 python
@@ -80,7 +80,7 @@ training_args = TrainingArguments(
     save_steps=100,
     save_total_limit=2
 )
-🔎 Predicting Intents
+## 🔎 Predicting Intents
 Run the prediction script:
 
 bash
@@ -95,7 +95,7 @@ Edit
 text = "Müzik açar mısın?"
 print(predict_intent(text))
 # Output: muzik_cal
-🗃 Dataset Format
+## 🗃 Dataset Format
 Example intent dataset (intent_dataset.py):
 
 python
@@ -109,7 +109,7 @@ intent_dataset = [
 ]
 For better results, use a larger and balanced dataset.
 
-📈 Training Results Example
+## 📈 Training Results Example
 bash
 Copy
 Edit
@@ -118,11 +118,11 @@ train_loss: Lower means better learning.
 
 train_runtime: Total training duration.
 
-📬 Contact
+## 📬 Contact
 If you have questions or suggestions, please reach out!
 Feyzullah Öztürk — LinkedIn • GitHub
 
-🧠 Future Plans
+## 🧠 Future Plans
 Add Text-to-Speech (TTS) using Coqui or gTTS.
 
 Implement IoT device control via MQTT or HTTP.
