@@ -40,6 +40,7 @@ pip install PyAudio
 pip install transformers
 pip install datasets
 pip install torch
+```
 🎯 Project Goal
 The aim is to create a Turkish-speaking voice assistant that runs offline, can be extended with machine learning, and controls IoT devices.
 
